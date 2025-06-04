@@ -1,0 +1,103 @@
+<body>
+  
+  <div class="container">
+    <div class="form-container">
+       <div>
+        <button (click)="demo('/viewallstudents')">view All Student</button>
+      </div>
+      <h4 class="form-title">Student Registration</h4>
+    </div>
+    
+    <form [formGroup]="postStudentForm" novalidate>
+      
+      <div>
+        <label for="studentName" class="form-group">Name</label><br />
+        <input
+          type="text"
+          id="studentName"
+          name="studentName"
+          formControlName="studentName"
+          placeholder="Enter full name"
+        />
+        <div *ngIf="postStudentForm.get('studentName')?.invalid && postStudentForm.get('studentName')?.touched" style="color: red;">
+          Name is required.
+        </div>
+      </div>
+
+      <div>
+        <label for="phoneNo" class="form-group">Phone Number</label><br />
+        <input
+          type="text"
+          id="phoneNo"
+          name="phoneNo"
+          maxlength="10"
+          formControlName="phoneNo"
+          placeholder="Enter phone number"
+          required
+        />
+        <div *ngIf="postStudentForm.get('phoneNo')?.invalid && postStudentForm.get('phoneNo')?.touched" style="color: red;">
+          phoneNo is required.
+        </div>
+      </div>
+
+      <div>
+        <label for="nativePlace" class="form-group">Native Place</label><br />
+        <input
+          type="text"
+          id="nativePlace"
+          name="nativePlace"
+          formControlName="nativePlace"
+          placeholder="City or Town"
+          required
+        /> <div *ngIf="postStudentForm.get('nativePlace')?.invalid && postStudentForm.get('nativePlace')?.touched" style="color: red;">
+          nativePlace is required.
+        </div>
+      </div>
+
+      <div>
+        <label for="email" class="form-group">Email</label><br />
+        <input
+          type="email"
+          id="email"
+          name="email"
+          formControlName="email"
+          placeholder="example@email.com"
+          required
+        />
+        <div *ngIf="postStudentForm.get('email')?.invalid && postStudentForm.get('email')?.touched" style="color: red;">
+          Enter a valid email.
+        </div>
+      </div>
+
+      <div>
+        <label for="dob" class="form-group">Date of Birth</label><br />
+        <input type="date" id="dob" name="dob" formControlName="dob" required/>
+        <div *ngIf="postStudentForm.get('dob')?.invalid && postStudentForm.get('dob')?.touched" style="color: red;">
+          dob is required.
+        </div>
+      </div>
+
+      <div>
+        <label for="department" class="form-group">Department</label><br />
+        <input
+          type="text"
+          id="department"
+          name="department"
+          formControlName="department"
+          placeholder="e.g. CSE, ECE"
+          required
+        />
+         <div *ngIf="postStudentForm.get('department')?.invalid && postStudentForm.get('department')?.touched" style="color: red;">
+         department is required.
+        </div>
+      </div>
+
+      <div style="margin-top: 15px;">
+        <button type="submit" (click)="onSubmit()" routerLink="viewallstudents">Submit</button>
+          <button type="reset" class="btn btn-secondary" (click)="resetForm()">Reset</button>
+      </div>
+     
+      
+    </form>
+  </div>
+</body>
